@@ -24,7 +24,7 @@ The case for the projects has been developed using FreeCAD.
 
 - Fully parametric design: The majority of the values used in the design can be
   easily changed by modifying the contents of the `param` spreadsheet
-- No threaded holes: Even tho FreeCAD offers an option to thread the holes,
+- No threaded holes: Even though FreeCAD offers an option to thread the holes,
   considering that the screws used have a diameter that is less than `3.5 mm`
   and the majority of 3D printers don't have that level of detail, I considered
   not doing the thread on holes and doing it later with the physical screw at
