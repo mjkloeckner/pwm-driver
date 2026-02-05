@@ -1,0 +1,35 @@
+* Potentiometer with switch
+*       _
+*  4-- o `-o --5
+*      _____
+*  1--|_____|--3
+*        |
+*        2
+*
+* Nodes:
+* 1 = CCW
+* 2 = Wiper
+* 3 = CW
+* 4 = Switch terminal 1
+* 5 = Switch terminal 2
+
+.subckt POT_SW 1 2 3 4 5
++ PARAMS: R=10k POS=0.5 SW_ON=0
+
+* Potentiometer (linear)
+R1 1 2 {R*(1-POS)}
+R2 2 3 {R*POS}
+
+* Switch as low or high impedance
+RSW 4 5 R={if(SW_ON>0.5, 0.05, 1e9)}
+
+* Switch with control voltage (0 or 1V)
+* BCTRL CTRL 0 V={SW_ON}
+* 
+* Switch model
+* .model SWMOD SW(Ron=0.1 Roff=1Meg Vt=0.5 Vh=0.1)
+* 
+* Switch instance
+* S1 4 5 CTRL 0 SWMOD
+
+.ends POT_SW
